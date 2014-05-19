@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Selenium"/>
+	<classpathentry kind="lib" path="D:/workspace/selenium-server-standalone-2.39.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/oananieva/WORK/webdriver-factory-1.1.41-javadoc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
