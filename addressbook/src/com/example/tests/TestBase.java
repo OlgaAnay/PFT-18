@@ -2,10 +2,14 @@ package com.example.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -24,7 +28,7 @@ public class TestBase {
 	@Before
 	public void setUp() throws Exception {
 	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost/addressbookv4.1.4/";
+	    baseUrl = "http://localhost/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 	

@@ -24,7 +24,7 @@ public class TestBaseTestNG {
 	@BeforeTest
 	public void setUp() throws Exception {
 	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost/addressbookv4.1.4/";
+	    baseUrl = "http://localhost/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 	
