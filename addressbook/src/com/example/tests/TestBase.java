@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestBase {
 
+<<<<<<< HEAD
 private static String baseUrl;
 private static WebDriver driver;
 protected String mon1;
@@ -71,6 +72,62 @@ return year1;
 
 }
 protected String selectNewGroup(){
+=======
+	private static String baseUrl;
+	private static WebDriver driver;
+	protected String mon1;
+	protected String day1;
+	protected String year1;
+	protected String newGroup1;
+	private static StringBuffer verificationErrors = new StringBuffer();
+
+	@Before
+	public void setUp() throws Exception {
+	    driver = new FirefoxDriver();
+	    baseUrl = "http://localhost/";
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  }
+	
+	@After
+	public void tearDown() throws Exception {
+	    driver.quit();
+	    String verificationErrorString = verificationErrors.toString();
+	    if (!"".equals(verificationErrorString)) {
+	      fail(verificationErrorString);
+	    }
+	  }
+
+	protected String selectDay() {
+		Random r = new Random();
+		int a = r.nextInt(30) + 2;
+		String day1 = driver.findElement(By.xpath("//select[@name=\"bday\"]/option[" + a + "]")).getText();
+	    System.out.println("День: " + day1);
+	
+		return day1;
+	
+	}
+
+	protected String selectMonth() {
+	      
+	    String[] mon = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+	    int b = (int)(Math.random() * 12 );
+		mon1 = mon[b];
+		System.out.println("Месяц: " + mon1);
+		
+		return mon1;
+	}
+
+	protected String selectYear() {
+	
+		int c = (int)(1970 + Math.random()*43);
+		String year1 = String.valueOf(c);
+	    System.out.println("Год: " + year1);
+
+		return year1;
+	
+	}
+	protected String selectNewGroup(){
+>>>>>>> 65a0e824a7807548070fd069ba7fafe861df5631
     
 int w = driver.findElements(By.xpath("//select[@name=\"new_group\"]/option")).size();
     System.out.println(+ w);
