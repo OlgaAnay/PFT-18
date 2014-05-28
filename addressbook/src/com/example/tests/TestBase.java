@@ -17,30 +17,25 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestBase {
 
-<<<<<<< HEAD
-private static String baseUrl;
-private static WebDriver driver;
-protected String mon1;
-protected String day1;
-protected String year1;
-protected String newGroup1;
-private static StringBuffer verificationErrors = new StringBuffer();
-
-@Before
-public void setUp() throws Exception {
-driver = new FirefoxDriver();
-baseUrl = "http://localhost/";
-driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-}
-
-@After
-public void tearDown() throws Exception {
-driver.quit();
-String verificationErrorString = verificationErrors.toString();
-if (!"".equals(verificationErrorString)) {
-fail(verificationErrorString);
-}
-}
+	private static String baseUrl;
+	private static WebDriver driver;
+	private static StringBuffer verificationErrors = new StringBuffer();
+	protected String day1, mon1, year1, newGroup1;
+	@Before
+	public void setUp() throws Exception {
+	    driver = new FirefoxDriver();
+	    baseUrl = "http://localhost/";
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  }
+	
+	@After
+	public void tearDown() throws Exception {
+	    driver.quit();
+	    String verificationErrorString = verificationErrors.toString();
+	    if (!"".equals(verificationErrorString)) {
+	      fail(verificationErrorString);
+	    }
+	  }
 
 protected String selectDay() {
 Random r = new Random();
@@ -69,65 +64,9 @@ String year1 = String.valueOf(c);
 System.out.println("ÃƒÃ®Ã¤: " + year1);
 
 return year1;
-
 }
-protected String selectNewGroup(){
-=======
-	private static String baseUrl;
-	private static WebDriver driver;
-	protected String mon1;
-	protected String day1;
-	protected String year1;
-	protected String newGroup1;
-	private static StringBuffer verificationErrors = new StringBuffer();
 
-	@Before
-	public void setUp() throws Exception {
-	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost/";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	  }
-	
-	@After
-	public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
-	  }
-
-	protected String selectDay() {
-		Random r = new Random();
-		int a = r.nextInt(30) + 2;
-		String day1 = driver.findElement(By.xpath("//select[@name=\"bday\"]/option[" + a + "]")).getText();
-	    System.out.println("Äåíü: " + day1);
-	
-		return day1;
-	
-	}
-
-	protected String selectMonth() {
-	      
-	    String[] mon = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-	    int b = (int)(Math.random() * 12 );
-		mon1 = mon[b];
-		System.out.println("Ìåñÿö: " + mon1);
-		
-		return mon1;
-	}
-
-	protected String selectYear() {
-	
-		int c = (int)(1970 + Math.random()*43);
-		String year1 = String.valueOf(c);
-	    System.out.println("Ãîä: " + year1);
-
-		return year1;
-	
-	}
 	protected String selectNewGroup(){
->>>>>>> 65a0e824a7807548070fd069ba7fafe861df5631
     
 int w = driver.findElements(By.xpath("//select[@name=\"new_group\"]/option")).size();
     System.out.println(+ w);
@@ -151,17 +90,17 @@ assertEquals("Address book", driver.getTitle());
 
 protected void editTable(ContactData contact) {
 driver.findElement(By.name("firstname")).clear();
-driver.findElement(By.name("firstname")).sendKeys(contact.firstn);
+driver.findElement(By.name("firstname")).sendKeys(contact.firstname);
 driver.findElement(By.name("lastname")).clear();
-driver.findElement(By.name("lastname")).sendKeys(contact.lastn);
+driver.findElement(By.name("lastname")).sendKeys(contact.lastname);
 driver.findElement(By.name("address")).clear();
-driver.findElement(By.name("address")).sendKeys(contact.adrr);
+driver.findElement(By.name("address")).sendKeys(contact.address);
 driver.findElement(By.name("home")).clear();
-driver.findElement(By.name("home")).sendKeys(contact.hom);
+driver.findElement(By.name("home")).sendKeys(contact.home);
 driver.findElement(By.name("mobile")).clear();
-driver.findElement(By.name("mobile")).sendKeys(contact.mob);
+driver.findElement(By.name("mobile")).sendKeys(contact.mobile);
 driver.findElement(By.name("work")).clear();
-driver.findElement(By.name("work")).sendKeys(contact.wor);
+driver.findElement(By.name("work")).sendKeys(contact.work);
 driver.findElement(By.name("email")).clear();
 driver.findElement(By.name("email")).sendKeys(contact.mail1);
 driver.findElement(By.name("email2")).clear();
@@ -172,7 +111,7 @@ driver.findElement(By.name("byear")).clear();
 driver.findElement(By.name("byear")).sendKeys(contact.year);
 new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contact.newGroup);
 driver.findElement(By.name("address2")).clear();
-driver.findElement(By.name("address2")).sendKeys(contact.addrr2);
+driver.findElement(By.name("address2")).sendKeys(contact.address2);
 driver.findElement(By.name("phone2")).clear();
 driver.findElement(By.name("phone2")).sendKeys(contact.phone2);
 }
