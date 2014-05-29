@@ -1,7 +1,7 @@
 package com.example.tests;
 import org.testng.annotations.Test;
 
-public class GroupRemovalTests extends TestBaseTestNG{
+public class GroupRemovalTestNG extends TestBaseTestNG{
 @Test
 public void deleteSomeGroup(){
 	app.getNavigationHelper().openMainPage();

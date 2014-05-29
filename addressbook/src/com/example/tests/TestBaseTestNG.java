@@ -6,7 +6,7 @@ import com.example.fw.ApplicationManager;
 
 public class TestBaseTestNG {
 
-protected ApplicationManager app;
+protected static ApplicationManager app;
 
 
 

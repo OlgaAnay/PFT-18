@@ -9,13 +9,13 @@ import org.openqa.selenium.support.ui.Select;
 
 public abstract class HelperBase {
 	
-	protected ApplicationManager manager;
-	protected WebDriver driver;
-    public boolean acceptNextAlert = true;
+	protected static ApplicationManager manager;
+	protected static WebDriver driver;
+    public static boolean acceptNextAlert = true;
     
 	public HelperBase(ApplicationManager manager){
 		this.manager = manager;
-		this.driver = manager.driver;
+		driver = ApplicationManager.driver;
 	}
 	
 	protected void selectByText(By locator, String text) {
@@ -50,8 +50,7 @@ public abstract class HelperBase {
 		driver.findElement(locator).clear();	
 		driver.findElement(locator).sendKeys(text);
 		}
-		else{}
-	}
+		}
 	protected void click(By locator) {
 		driver.findElement(locator).click();
 	}

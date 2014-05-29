@@ -16,7 +16,7 @@ public String newGroup;
 public String address2;
 public String phone2;
 
-
+/*
 public ContactData(String firstname, String lastname, String address, String home,
 String mobile, String work, String mail1, String mail2, String day,
 String month, String year, String newGroup, String address2,
@@ -37,7 +37,7 @@ this.address2 = address2;
 this.phone2 = phone2;
 }
 
-
+*/
 public ContactData() {
 
 }

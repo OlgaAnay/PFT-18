@@ -1,11 +1,8 @@
 package com.example.fw;
 
-import java.awt.List;
-
 import org.openqa.selenium.By;
 
 import com.example.tests.GroupData;
-import com.example.tests.TestBaseTestNG;
 
 public class GroupHelper extends HelperBase {
 

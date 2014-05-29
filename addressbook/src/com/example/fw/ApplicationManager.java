@@ -1,19 +1,18 @@
 package com.example.fw;
 
-import static org.junit.Assert.fail;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ApplicationManager {
 	
-	protected WebDriver driver;
-	public String baseUrl;
+	protected static WebDriver driver;
+	public static String baseUrl;
 
 	
-	private NavigationHelper navigationHelper;
- 	private GroupHelper groupHelper; 
- 	private ContactHelper contactHelper;
+	private static NavigationHelper navigationHelper;
+ 	private static GroupHelper groupHelper; 
+ 	private static ContactHelper contactHelper;
  	
 	public ApplicationManager(){
 		driver = new FirefoxDriver();

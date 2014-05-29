@@ -1,7 +1,7 @@
 package com.example.tests;
 import org.testng.annotations.Test;
 
-public class GroupModification extends TestBaseTestNG{
+public class GroupModificationTestNG extends TestBaseTestNG{
 @Test
 public void modifySomeGroup(){
 	app.getNavigationHelper().openMainPage();
