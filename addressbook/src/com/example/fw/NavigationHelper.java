@@ -7,15 +7,14 @@ public class NavigationHelper extends HelperBase {
 
 	public NavigationHelper(ApplicationManager manager) {
 		super(manager);
-
 	}
 
 	public void openMainPage() {
-	driver.get(ApplicationManager.baseUrl+"/addressbookv4.1.4/");
+		driver.get(ApplicationManager.baseUrl+"/addressbookv4.1.4/");
 	}
 
 	public void gotoGroupsPage() {
-	click(By.linkText("groups"));
+		click(By.linkText("groups"));
 	}
 
 }

@@ -6,9 +6,8 @@ public class ContactModificationTestNG extends TestBaseTestNG {
 	@Test
 	public void modifySomeContact()  throws Exception {
 		app.getNavigationHelper().openMainPage();
-		app.getContactHelper().editSomeContact(1);
-//		app.getContactHelper().editRandomContact(app.getContactHelper().randomIndex);
-	    
+		//app.getContactHelper().editSomeContact(1); //this can be used for another condition
+		app.getContactHelper().editRandomContact();
 	    ContactData contact = new ContactData();
 	    contact.lastname = "RRRRffrefewfModified Last Name";
 		app.getContactHelper().editTable(contact);

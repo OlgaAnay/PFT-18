@@ -9,18 +9,24 @@ import org.openqa.selenium.support.ui.Select;
 
 public abstract class HelperBase {
 	
-	protected static ApplicationManager manager;
+	protected ApplicationManager manager;
 	protected static WebDriver driver;
     public static boolean acceptNextAlert = true;
     
-	public HelperBase(ApplicationManager manager){
+	public HelperBase(ApplicationManager manager) {
 		this.manager = manager;
 		driver = ApplicationManager.driver;
 	}
 	
 	protected void selectByText(By locator, String text) {
-		new Select(driver.findElement(locator)).selectByVisibleText(text);
+		if (text != null){
+			new Select(driver.findElement(locator)).selectByVisibleText(text);
+		}
 	}
+	
+	protected int countElements(By locator) {
+		return driver.findElements(locator).size();
+	} 
 
     private boolean isElementPresent(By by) {
         try {
@@ -47,8 +53,8 @@ public abstract class HelperBase {
       }
 	protected void type(By locator, String text) {
 		if (text != null){
-		driver.findElement(locator).clear();	
-		driver.findElement(locator).sendKeys(text);
+			driver.findElement(locator).clear();	
+			driver.findElement(locator).sendKeys(text);
 		}
 		}
 	protected void click(By locator) {
