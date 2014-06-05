@@ -5,11 +5,9 @@ import org.testng.annotations.Test;
 public class ContactRemovalTestNG extends TestBaseTestNG {
 	
 	@Test
-	public void modifySomeContact() {
+	public void removeContact() {
 		app.getNavigationHelper().openMainPage();
-		app.getContactHelper().editSomeContact(1);
-	    app.getContactHelper().deleteContact(); 
-
-	}
-	
+		app.getContactHelper().selectSomeContact(0);
+	    app.getContactHelper().deleteSelectedContact(); 
+	}	
 }
