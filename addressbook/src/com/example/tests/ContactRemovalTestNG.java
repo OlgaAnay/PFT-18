@@ -7,15 +7,15 @@ import org.testng.annotations.Test;
 
 public class ContactRemovalTestNG extends TestBaseTestNG {
 	
-	@Test
-	public void removeContact() {
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void removeContact(ContactData contact) {
 		app.getNavigationHelper().openMainPage();
 		
 		//save state
 		List<ContactData> oldList = app.getContactHelper().getContacts();		
 			
 		//actions
-		//app.getContactHelper().deleteAllContacts(); // it sometime usefull
+		//app.getContactHelper().deleteAllContacts(); // it sometime is useful
 		app.getContactHelper().selectSomeContact(0);
 	    app.getContactHelper().deleteSelectedContact(); 
 		app.getContactHelper().gotoHomePage();

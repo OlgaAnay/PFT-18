@@ -6,8 +6,8 @@ import java.util.Random;
 import org.testng.annotations.Test;
 
 public class GroupRemovalTestNG extends TestBaseTestNG {
-@Test
-	public void deleteSomeGroup() {
+@Test(dataProvider = "randomValidGroupGenerator")
+	public void deleteSomeGroup(GroupData group) {
 		app.getNavigationHelper().openMainPage();
 		app.getNavigationHelper().gotoGroupsPage();
 		

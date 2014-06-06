@@ -10,9 +10,9 @@ import com.example.tests.ContactData;
 
 public class ContactHelper extends HelperBase {
 
-	public String newGroup1;
 	public static int randomIndex;
-	public static int i;
+
+	public static String newGroup;
 	
 	public ContactHelper(ApplicationManager manager) {
 		super(manager);	
@@ -34,12 +34,10 @@ public class ContactHelper extends HelperBase {
 	}
 	
 	public void selectSomeContact(int index) {
-		int w = countElementsByXPath("//img[@alt=\"Edit\" and @title =\"Edit\"]");
-		System.out.println("Contacts = " + w);
 		click(By.xpath("//img[@alt=\"Edit\" and @title =\"Edit\"][" + (index + 1) + "]"));		
 	}
 	  
-	public void deleteAllContacts() {
+	public void deleteAllContacts() {				
 		int w = countElementsByXPath("//img[@alt=\"Edit\" and @title =\"Edit\"]");
 		System.out.println("Contacts = " + w);
 		for (int i = 1; i <= w; i++){
@@ -48,7 +46,6 @@ public class ContactHelper extends HelperBase {
 		click(By.linkText("home page"));
 		}
 	}
-	
 	
 	public void openAddNew() {
 		click(By.linkText("add new"));
@@ -69,7 +66,7 @@ public class ContactHelper extends HelperBase {
 	
 		type(By.name("byear"),contact.year);
 	
-		selectByText(By.name("new_group"),contact.newGroup);
+		selectByText(By.name("new_group"), contact.newGroup);
 		
 		type(By.name("address2"),contact.address2);
 		type(By.name("phone2"),contact.phone2);
@@ -79,27 +76,27 @@ public class ContactHelper extends HelperBase {
 	public String selectMonth(ApplicationManager applicationManager) {	      
 	    String[] month = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    int b = (int)(Math.random() * 12 );
-		String mon1 = month[b];
-		System.out.println(mon1);
+		String mon = month[b];
+		System.out.println(mon);
 		
-		return mon1;
+		return mon;
 	}
 
 	public String selectDay(ApplicationManager applicationManager) {
 		Random r = new Random();
 		int a = r.nextInt(30) + 2;
-		String day1 = findElementByText("//select[@name=\"bday\"]/option[" + a + "]");
-	    System.out.println(day1);
+		String day = String.valueOf(a);
+	    System.out.println(day);
 	
-		return day1;	
+		return day;	
 	}
 
 	public String selectYear(ApplicationManager applicationManager) {	
 		int c = (int)(1970 + Math.random()*43);
-		String year1 = String.valueOf(c);
-	    System.out.println(year1);
+		String year = String.valueOf(c);
+	    System.out.println(year);
 	
-		return year1;
+		return year;
 	}
 
 	public void submitEdit() {
@@ -107,15 +104,15 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public String selectNewGroup(ApplicationManager applicationManager) {	
-		int w = countElementsByXPath("//select[@name=\"new_group\"]/option");
-		System.out.println( w);
-		Random r = new Random();
-		int a = r.nextInt(w)+1;
-		System.out.println( a);
-		newGroup1 = findElementByText("//select[@name=\"new_group\"]/option["+ a +"]");
-		System.out.println( newGroup1);
+			int w = countElements(By.xpath("//select[@name=\"new_group\"]/option"));
+			System.out.println("How many groups now: " + w);
+			Random r = new Random();
+			int a = r.nextInt(w)+1;
+			System.out.println(a);
+			newGroup = findElementByText("(//select[@name=\"new_group\"]/option)["+a+"]");
+			System.out.println("newGroup " + newGroup);		
 		
-		return newGroup1;
+		return newGroup;
 	}
 	private String findElementByText(String locator) {
 		return driver.findElement(By.xpath(locator)).getText();

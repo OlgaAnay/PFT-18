@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 public class ContactModificationTestNG extends TestBaseTestNG {
 
-	@Test
-	public void modifySomeContact()  throws Exception {
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void modifySomeContact(ContactData contact)  throws Exception {
 		app.getNavigationHelper().openMainPage();
 
 		//save state
@@ -15,10 +15,9 @@ public class ContactModificationTestNG extends TestBaseTestNG {
 		
 		//actions
 		
-		app.getContactHelper().selectSomeContact(0); //this can be used for another condition
+		app.getContactHelper().selectSomeContact(0); 
 		//app.getContactHelper().editRandomContact(); //this can be used for another condition
-	    ContactData contact = new ContactData();
-	    contact.lastname = "RRRRffrefewfModified";
+
 		app.getContactHelper().editTable(contact);
 		app.getContactHelper().updateContact();
 		app.getContactHelper().gotoHomePage();	

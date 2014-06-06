@@ -1,5 +1,7 @@
 package com.example.tests;
 
+import com.example.fw.ApplicationManager;
+
 public class ContactData implements Comparable<ContactData>{
 	public String firstname;
 	public String lastname;
@@ -15,11 +17,32 @@ public class ContactData implements Comparable<ContactData>{
 	public String newGroup;
 	public String address2;
 	public String phone2;
+	protected static ApplicationManager app;
 
 	public ContactData() {
 	
 	}
-
+	public ContactData(String firstname, String lastname, String address,  String  home, String mobile
+			, String work, String mail1, String  mail2
+			, String day, String month, String year
+			, String newGroup, String address2, String phone2) {
+		this.firstname = "aaa";
+		this.lastname = "Testing";
+		this.home = "Spb";
+		this.mobile = "1235678901";
+		this.mail1 = "2@d.d";
+		this.address2 = "123";
+		this.address = "234";
+		this.mail2 = "3@h.r";
+		this.phone2 = "09876543212";
+		this.work = "Work777";
+		
+		this.month = app.getContactHelper().selectMonth(app);
+		this.day = app.getContactHelper().selectDay(app);
+		this.year = app.getContactHelper().selectYear(app);
+		
+		this.newGroup = app.getContactHelper().selectNewGroup(app);
+	}
 	@Override
 	public String toString() {
 		return "ContactData [firstname=" + firstname + ", lastname=" + lastname
