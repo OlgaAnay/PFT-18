@@ -60,4 +60,5 @@ public abstract class HelperBase {
 	protected void click(By locator) {
 		driver.findElement(locator).click();
 	}
+	
 }

@@ -1,13 +1,18 @@
 package com.example.fw;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.example.tests.ContactData;
 
 public class ContactHelper extends HelperBase {
 
 	public String newGroup1;
 	public static int randomIndex;
+	public static int i;
 	
 	public ContactHelper(ApplicationManager manager) {
 		super(manager);	
@@ -27,10 +32,24 @@ public class ContactHelper extends HelperBase {
 		System.out.println("ri= "+randomIndex);
 		click(By.xpath("(//img[@alt='Edit'])[" + randomIndex + "]"));	
 	}
+	
 	public void selectSomeContact(int index) {
-		click(By.xpath("//img[@alt=\"Edit\" and @title =\"Edit\"][" + (index+1) + "]"));	
+		int w = countElementsByXPath("//img[@alt=\"Edit\" and @title =\"Edit\"]");
+		System.out.println("Contacts = " + w);
+		click(By.xpath("//img[@alt=\"Edit\" and @title =\"Edit\"][" + (index + 1) + "]"));		
 	}
 	  
+	public void deleteAllContacts() {
+		int w = countElementsByXPath("//img[@alt=\"Edit\" and @title =\"Edit\"]");
+		System.out.println("Contacts = " + w);
+		for (int i = 1; i <= w; i++){
+		click(By.xpath("(//img[@alt='Edit'])[" + i + "]"));
+		click(By.xpath("(//input[@name='update'])[2]"));
+		click(By.linkText("home page"));
+		}
+	}
+	
+	
 	public void openAddNew() {
 		click(By.linkText("add new"));
 	}
@@ -107,7 +126,21 @@ public class ContactHelper extends HelperBase {
 	}
 	
 	public void gotoHomePage() {
-		driver.findElement(By.linkText("home page")).click();
+		click(By.linkText("home page"));
+	}
+	
+	public List<ContactData> getContacts() {
+		List<ContactData> contacts = new ArrayList<ContactData>();
+		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
+		for (WebElement checkbox : checkboxes){
+			ContactData contact = new ContactData();
+			String title = checkbox.getAttribute("title");
+			String fn = title.substring("Select (".length(),title.length() - ")".length());
+			contact.firstname = fn.substring(0, fn.indexOf(" "));		
+			contact.lastname = fn.substring(fn.indexOf(" ") + 1);		
+			contacts.add(contact);
+		}
+		return contacts;
 	}
 
 }
