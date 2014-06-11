@@ -1,14 +1,14 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 import org.testng.annotations.Test;
 
 import com.example.entities.ContactData;
+import com.example.utils.SortedListOf;
 
 public class ContactRemoval extends TestBase {
 
@@ -16,18 +16,18 @@ public class ContactRemoval extends TestBase {
 	public void removeContact(ContactData contact) {
 		app.navigateTo().mainPage();
 
-		List<ContactData> oldList = app.getContactHelper().getContacts();
-		
+		SortedListOf<ContactData> oldList = app.getContactHelper()
+				.getContacts();
+
 		Random rnd = new Random();
 		int index = rnd.nextInt(oldList.size() - 1);
 
-		 //app.getContactHelper().deleteAllContacts(); // it sometimes useful
+		// app.getContactHelper().deleteAllContacts(); // it sometimes useful
 		app.getContactHelper().removeContact(index);
 
-		List<ContactData> newList = app.getContactHelper().getContacts();
+		SortedListOf<ContactData> newList = app.getContactHelper()
+				.getContacts();
 
-		oldList.remove(index);
-		Collections.sort(oldList);
-		assertEquals(newList, oldList);
+		assertThat(newList, equalTo(oldList.without(index)));
 	}
 }

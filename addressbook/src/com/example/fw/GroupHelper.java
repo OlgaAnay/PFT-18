@@ -1,12 +1,12 @@
 package com.example.fw;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.example.entities.GroupData;
+import com.example.utils.SortedListOf;
 
 public class GroupHelper extends HelperBase {
 
@@ -43,18 +43,18 @@ public class GroupHelper extends HelperBase {
 		return this;
 	}
 
-	private List<GroupData> cachedGroups;
-	
-	public List<GroupData> getGroups() {
-			if(cachedGroups == null) {
+	private SortedListOf<GroupData> cachedGroups;
+
+	public SortedListOf<GroupData> getGroups() {
+		if (cachedGroups == null) {
 			rebuildCache();
-			}			
+		}
 		return cachedGroups;
 	}
-	
+
 	private void rebuildCache() {
-		cachedGroups = new ArrayList<GroupData>();
-		
+		cachedGroups = new SortedListOf<GroupData>();
+
 		manager.navigateTo().groupsPage();
 		List<WebElement> checkboxes = findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes) {
