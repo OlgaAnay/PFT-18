@@ -26,7 +26,7 @@ public class ContactHelper extends HelperBase {
 		editTable(contact, ContactHelper.CREATION);
 		submitEdit();
 		gotoHomePage();
-		
+		rebuildCache();
 		return this;
 	}
 	
@@ -36,6 +36,7 @@ public class ContactHelper extends HelperBase {
 		// editRandomContact(); //this can be used for another condition
 		editTable(contact, ContactHelper.MODIFICATION).updateContact();
 		gotoHomePage();
+		rebuildCache();
 		return this;
 	}
 	
@@ -45,13 +46,22 @@ public class ContactHelper extends HelperBase {
 		selectSomeContact(index);
 		deleteSelectedContact();
 		gotoHomePage();
+		rebuildCache();
 		}
 		return this;
 	}
-
+	private List<ContactData> cachedContacts;
+	
 	public List<ContactData> getContacts() {
+			if(cachedContacts == null) {
+				rebuildCache();
+			}
+		return cachedContacts;
+	}
+	
+	private void rebuildCache() {
 		manager.navigateTo().mainPage();
-		List<ContactData> contacts = new ArrayList<ContactData>();
+		cachedContacts = new ArrayList<ContactData>();
 		List<WebElement> checkboxes = findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes){
 
@@ -59,11 +69,10 @@ public class ContactHelper extends HelperBase {
 			String fn = title.substring("Select (".length(),title.length() - ")".length());
 			String firstname = fn.substring(0, fn.indexOf(" "));		
 			String lastname = fn.substring(fn.indexOf(" ") + 1);
-			contacts.add(new ContactData()
+			cachedContacts.add(new ContactData()
 					.withFirstname(firstname)
 					.withLastname(lastname));
 		}
-		return contacts;
 	}
 	
 	public int countContacts() {
@@ -73,10 +82,12 @@ public class ContactHelper extends HelperBase {
 //-------------------------------------------------------	
 	public ContactHelper deleteSelectedContact() {
 		click(By.xpath("(//input[@name='update'])[2]"));
+		rebuildCache();
 		return this;
 	}
 	public ContactHelper updateContact() {
 		click(By.name("update"));
+		cachedContacts = null;
 		return this;
 	}
 	
@@ -97,6 +108,7 @@ public class ContactHelper extends HelperBase {
 	public ContactHelper deleteAllContacts() {
 		if (countContacts() != 0) {
 		selectContactAndDeleteIt();
+		rebuildCache();
 		}	
 		return this;
 	}
@@ -108,6 +120,7 @@ public class ContactHelper extends HelperBase {
 		click(By.xpath("(//img[@alt='Edit'])[" + index + "]"));
 		deleteSelectedContact();
 		gotoHomePage();
+		rebuildCache();
 		}
 		return this;
 	}
@@ -144,6 +157,7 @@ public class ContactHelper extends HelperBase {
 
 	public ContactHelper submitEdit() {
 		click(By.name("submit"));
+		cachedContacts = null;
 		return this;
 	}
 
