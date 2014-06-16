@@ -9,7 +9,7 @@ public class NavigationHelper extends HelperBase {
 	}
 
 	public void mainPage() {
-		if (! onMainPage()) {
+		if (!onMainPage()) {
 			click(By.linkText("home"));
 		}
 	}
@@ -19,14 +19,15 @@ public class NavigationHelper extends HelperBase {
 	}
 
 	public void groupsPage() {
-		if (!onGroupPage()){
-		click(By.linkText("groups"));
+		if (!onGroupPage()) {
+			click(By.linkText("groups"));
 		}
 	}
 
 	private boolean onGroupPage() {
 		String currentURL = getCurrentUrl();
 		findElements(By.name("new"));
-		return (currentURL.contains("/group.php") && findElements(By.name("new")).size() > 0);
+		return (currentURL.contains("/group.php") && findElements(
+				By.name("new")).size() > 0);
 	}
 }

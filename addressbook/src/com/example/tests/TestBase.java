@@ -32,8 +32,7 @@ public class TestBase {
 	public Iterator<Object[]> randomValidGroupGenerator() {
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (int i = 0; i < 1; i++) {
-			GroupData group = new GroupData()
-					.withName(generateRandomString())
+			GroupData group = new GroupData().withName(generateRandomString())
 					.withHeader(generateRandomString())
 					.withFooter(generateRandomString());
 			list.add(new Object[] { group });
@@ -55,12 +54,12 @@ public class TestBase {
 			ContactData contact = new ContactData()
 					.withFirstname(generateRandomString())
 					.withLastname(generateRandomString())
-					.withMobile(generateRandomString())
+					.withMobile(generateRandomPhone())
 					.withMail1(generateRandomString())
 					.withAddress2(generateRandomString())
 					.withAddress(generateRandomString())
 					.withMail2(generateRandomString())
-					.withPhone2(generateRandomString())
+					.withPhone2(generateRandomPhone())
 					.withWork(generateRandomString())
 					.withMonth(Randomizer.selectMonth())
 					.withDay(Randomizer.selectDay())
@@ -73,5 +72,9 @@ public class TestBase {
 
 	public String generateRandomString() {
 		return Randomizer.generateRandomString();
+	}
+
+	public String generateRandomPhone() {
+		return Randomizer.generateRandomPhone();
 	}
 }

@@ -12,6 +12,15 @@ public class Randomizer {
 		}
 	}
 
+	public static String generateRandomPhone() {
+		Random rnd = new Random();
+		if (rnd.nextInt(3) == 0) {
+			return "";
+		} else {
+			return "" + rnd.nextInt() * 10;
+		}
+	}
+
 	public static String selectMonth() {
 		String[] month = new String[] { "January", "February", "March",
 				"April", "May", "June", "July", "August", "September",

@@ -82,7 +82,6 @@ public class ContactHelper extends HelperBase {
 	// -------------------------------------------------------
 	public ContactHelper deleteSelectedContact() {
 		click(By.xpath("(//input[@name='update'])[2]"));
-		rebuildCache();
 		return this;
 	}
 
@@ -116,7 +115,7 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public ContactHelper selectContactAndDeleteIt() {
-		int w = countContacts(); // countElements(By.xpath("//img[@alt='Edit' and @title ='Edit']"));
+		int w = countContacts();
 		System.out.println("Contacts = " + w);
 		for (int index = 1; index <= w; index++) {
 			click(By.xpath("(//img[@alt='Edit'])[" + index + "]"));
