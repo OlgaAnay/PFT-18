@@ -2,8 +2,11 @@ package com.example.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+
 import java.util.Random;
+
 import org.testng.annotations.Test;
+
 import com.example.entities.GroupData;
 import com.example.utils.SortedListOf;
 

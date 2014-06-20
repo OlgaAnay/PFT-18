@@ -9,7 +9,7 @@ import com.example.entities.ContactData;
 import com.example.utils.SortedListOf;
 
 public class ContactCreation extends TestBase {
-
+	
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void testContactCreation(ContactData contact) throws Exception {
 		app.navigateTo().mainPage();
