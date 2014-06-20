@@ -21,12 +21,20 @@ public class ContactData implements Comparable<ContactData> {
 
 	@Override
 	public String toString() {
-		return "ContactData [firstname=" + firstname + ", lastname=" + lastname
-				+ ", address=" + address + ", home=" + home + ", mobile="
-				+ mobile + ", work=" + work + ", mail1=" + mail1 + ", mail2="
-				+ mail2 + ", day=" + day + ", month=" + month + ", year="
-				+ year + ", newGroup=" + newGroup + ", address2=" + address2
-				+ ", phone2=" + phone2 + "]";
+		return "ContactData [firstname=" + firstname + "," +
+							" lastname=" + lastname	+ "," +
+							" address=" + address + "," +
+							" home=" + home + "," +
+							" mobile=" + mobile + "," +
+							" work=" + work + "," +
+							" mail1=" + mail1 + "," +
+							" mail2=" + mail2 + "," +
+							" day=" + day + ", " +
+							" month=" + month + "," +
+							" year=" + year + "," +
+							" newGroup=" + newGroup + ", " +
+							" address2=" + address2 + "," +
+							" phone2=" + phone2 + "]";
 	}
 
 	public String getFirstname() {

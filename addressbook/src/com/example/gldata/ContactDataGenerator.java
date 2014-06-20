@@ -1,17 +1,18 @@
 package com.example.gldata;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import com.example.entities.ContactData;
 import com.example.entities.GroupData;
+import com.example.fw.ApplicationManager;
 import com.example.utils.Randomizer;
 import com.thoughtworks.xstream.XStream;
-import com.example.fw.ApplicationManager;
 
 public class ContactDataGenerator {
 
@@ -64,6 +65,40 @@ public class ContactDataGenerator {
 						+ contact.getWork() + "," + contact.getNewGroup() + ",|" + "\n");
 		}
 		writer.close();		
+	}
+	
+	public static List<ContactData> loadContactsXMLFile(File file) {
+		XStream xstream = new XStream();
+		xstream.alias("contact", ContactData.class);
+		return (List<ContactData>) xstream.fromXML(file);
+	}
+	
+	public static List<ContactData> loadContactsFromCsvFile(File file) throws IOException {
+		List<ContactData> list = new ArrayList<ContactData>();
+		FileReader reader = new FileReader(file);
+		BufferedReader bufferedReader = new BufferedReader(reader);
+		String line = bufferedReader.readLine();
+		while (line != null) {
+			String[] part = line.split(",");
+			ContactData contact = new ContactData()
+				.withFirstname(part[0])
+				.withLastname(part[1])
+				.withAddress(part[2])
+				.withAddress2(part[3])
+				.withDay(part[4])
+				.withMonth(part[5])
+				.withYear(part[6])
+				.withMail1(part[7])
+				.withMail2(part[8])
+				.withMobile(part[9])
+				.withPhone2(part[10])
+				.withWork(part[11]);
+				//.withNewGroup(part[12]);
+			list.add(contact);
+			line = bufferedReader.readLine();
+		}
+		bufferedReader.close();
+		return list;
 	}
 
 	public static List<ContactData> generateRandomContacts(int amount) {
