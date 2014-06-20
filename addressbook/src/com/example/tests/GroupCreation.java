@@ -1,6 +1,5 @@
 package com.example.tests;
 
-//import static com.example.tests.GroupDataGenerator.generateRandomGroups;
 import static com.example.gldata.GroupDataGenerator.loadGroupsXMLFile;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
