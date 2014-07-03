@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import static com.example.gldata.GroupDataGenerator.loadGroupsXMLFile;
+import static com.example.gldata.GroupDataGenerator.loadGroupsFromCsvFile;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -18,7 +19,7 @@ public class GroupCreation extends TestBase {
 
 	@DataProvider
 	public Iterator<Object[]> groupsFromFile() throws IOException {
-		return wrapGroupDataForDataProvider(loadGroupsXMLFile(new File("groups.xml"))).iterator();
+		return wrapGroupDataForDataProvider(loadGroupsFromCsvFile(new File("groups.txt"))).iterator();
 	}
 
 	@Test(dataProvider = "groupsFromFile")

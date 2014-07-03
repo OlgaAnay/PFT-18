@@ -46,7 +46,7 @@ public class ContactDataGenerator {
 	private static void saveContactsXMLFile(List<ContactData> contacts,
 			File file) throws IOException {
 		XStream xstream = new XStream();
-		xstream.alias("contact", GroupData.class);
+		xstream.alias("contact", ContactData.class);
 		String xml = xstream.toXML(contacts);
 		FileWriter writer = new FileWriter(file);
 		writer.write(xml);
@@ -102,16 +102,6 @@ public class ContactDataGenerator {
 	}
 
 	public static List<ContactData> generateRandomContacts(int amount) {
-
-	/*		app.navigateTo().mainPage();
-			List<GroupData> groups = app.getGroupHelper().getGroups();
-			int groupsAmount = groups.size();
-
-			List<ContactData> list = new ArrayList<ContactData>();
-			for (int i = 0; i < amount; i++) {
-				Random r = new Random();
-				int randomGroupNumber = r.nextInt(groupsAmount);
-*/
 		
 		List<ContactData> list = new ArrayList<ContactData>();
 		for (int i = 0; i < amount; i++) {		

@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import static com.example.gldata.ContactDataGenerator.loadContactsXMLFile;
+import static com.example.gldata.ContactDataGenerator.loadContactsFromCsvFile;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
