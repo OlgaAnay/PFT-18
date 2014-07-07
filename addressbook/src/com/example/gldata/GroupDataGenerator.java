@@ -26,13 +26,16 @@ public class GroupDataGenerator {
 		if (file.exists()){
 			System.out.println("File already exists " + file);
 			return;
-		}
+		} 
 		List<GroupData> groups = generateRandomGroups(amount);
 		if ("csv".equals(format)) {
 			saveGroupsCsvFile(groups, file);
 		} else if ("xml".equals(format)) {
 			saveGroupsXMLFile(groups, file);
-		} else {
+		} else if ("csv".equals(format) && "xml".equals(format)) {
+			saveGroupsXMLFile(groups, file);
+		}
+		else {
 			System.out.println("Unknowm format " + format);
 					return;
 		}

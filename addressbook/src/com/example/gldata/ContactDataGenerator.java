@@ -37,6 +37,8 @@ public class ContactDataGenerator {
 			saveContactsCsvFile(contacts, file);
 		} else if ("xml".equals(format)) {
 			saveContactsXMLFile(contacts, file);
+		} else if ("csv".equals(format) && "xml".equals(format)) {
+			saveContactsXMLFile(contacts, file);
 		} else {
 			System.out.println("Unknowm format: " + format);
 			return;
