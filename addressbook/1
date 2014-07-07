@@ -1,0 +1,23 @@
+[TestNG] Running:
+  C:\Users\oananieva\Documents\GitHub\PFT-18\addressbook\testng-customsuite.xml
+
+PASSED: testGroupCreationWithValidData(GroupData [name=test-255200805, header=test-2103508130, footer=test1281839897])
+PASSED: testGroupCreationWithValidData(GroupData [name=test1100167508, header=test-683061203, footer=])
+
+===============================================
+    Default test
+    Tests run: 2, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 2, Failures: 0, Skips: 0
+===============================================
+
+[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@64a294a6: 40 ms
+[TestNG] Time taken by org.testng.reporters.EmailableReporter2@53e25b76: 10 ms
+[TestNG] Time taken by org.testng.reporters.XMLReporter@484b61fc: 0 ms
+[TestNG] Time taken by [FailedReporter passed=0 failed=0 skipped=0]: 0 ms
+[TestNG] Time taken by org.testng.reporters.jq.Main@1a93a7ca: 20 ms
+[TestNG] Time taken by org.testng.reporters.JUnitReportReporter@3f8f9dd6: 10 ms
