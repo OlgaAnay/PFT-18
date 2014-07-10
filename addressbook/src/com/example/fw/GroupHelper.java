@@ -25,6 +25,7 @@ public class GroupHelper extends HelperBase {
 	}
 
 	public GroupHelper modifyGroup(int index, GroupData group) {
+		manager.navigateTo().groupsPage();
 		initGroupModification(index);
 		fillGroupForm(group);
 		submitGroupModification();
@@ -35,6 +36,7 @@ public class GroupHelper extends HelperBase {
 
 	public GroupHelper deleteGroup(int index) {
 		if (countGroups() != 0) {
+			manager.navigateTo().groupsPage();
 			selectGroupByIndex(index);
 			submitGroupDeletion();
 			returnToGroupsPage();

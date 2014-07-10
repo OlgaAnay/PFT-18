@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.entities.ContactData;
-import com.example.entities.GroupData;
 import com.example.fw.ApplicationManager;
 import com.example.utils.Randomizer;
 import com.thoughtworks.xstream.XStream;
