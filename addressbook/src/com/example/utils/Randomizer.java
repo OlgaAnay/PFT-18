@@ -45,4 +45,11 @@ public class Randomizer {
 		System.out.println(year);
 		return year;
 	}
+
+	public static String generateRandomHome() {
+		String[] home = new String[] { "Moskow", "Spb", "Corinthos" };
+		int b = (int) (Math.random() * home.length);
+		String home1 = home[b];
+		return home1;
+	}
 }

@@ -91,7 +91,8 @@ public class ContactDataGenerator {
 				.withMail2(part[8])
 				.withMobile(part[9])
 				.withPhone2(part[10])
-				.withWork(part[11]);
+				.withWork(part[11])
+				.withHome(part[12]);
 				//.withNewGroup(part[12]);
 			list.add(contact);
 			line = bufferedReader.readLine();
@@ -109,6 +110,7 @@ public class ContactDataGenerator {
 					.withFirstname(generateRandomString())
 					.withLastname(generateRandomString())
 					.withMobile(generateRandomPhone())
+					.withHome(Randomizer.generateRandomHome())
 					.withMail1(generateRandomString())
 					.withAddress2(generateRandomString())
 					.withAddress(generateRandomString())
@@ -123,7 +125,7 @@ public class ContactDataGenerator {
 		}
 		return list;
 	}
-	
+
 	public static String generateRandomString() {
 		return Randomizer.generateRandomString();
 	}

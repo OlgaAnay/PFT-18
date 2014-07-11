@@ -15,6 +15,7 @@ public class ContactData implements Comparable<ContactData> {
 	private String newGroup;
 	private String address2;
 	private String phone2;
+	private String id;
 
 	public ContactData() {
 	}
@@ -116,6 +117,11 @@ public class ContactData implements Comparable<ContactData> {
 				other.lastname.toLowerCase());
 	}
 
+	public ContactData withId(String id) {
+		this.id = id;
+		return this;
+	}
+	
 	public ContactData withFirstname(String firstname) {
 		this.firstname = firstname;
 		return this;
@@ -128,6 +134,11 @@ public class ContactData implements Comparable<ContactData> {
 
 	public ContactData withMobile(String mobile) {
 		this.mobile = mobile;
+		return this;
+	}
+	
+	public ContactData withHome(String home) {
+		this.home = home;
 		return this;
 	}
 
@@ -180,4 +191,69 @@ public class ContactData implements Comparable<ContactData> {
 		this.newGroup = newGroup;
 		return this;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setHome(String home) {
+		this.home = home;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public void setWork(String work) {
+		this.work = work;
+	}
+
+	public void setMail1(String mail1) {
+		this.mail1 = mail1;
+	}
+
+	public void setMail2(String mail2) {
+		this.mail2 = mail2;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public void setNewGroup(String newGroup) {
+		this.newGroup = newGroup;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+	
 }

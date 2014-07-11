@@ -19,15 +19,20 @@ public class ContactModification extends TestBase {
 
 	@DataProvider
 	public Iterator<Object[]> contactsFromFile() throws IOException {
-		return wrapContactDataForDataProvider(loadContactsXMLFile(new File("contacts.xml"))).iterator();
+		return wrapContactDataForDataProvider(
+				loadContactsXMLFile(new File("contacts.xml"))).iterator();
 	}
-	
+
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void modifySomeContact(ContactData contact) throws Exception {
 		app.navigateTo().mainPage();
 
-		SortedListOf<ContactData> oldList = app.getContactHelper()
-				.getContacts();
+		SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app
+				.getHibernateHelper().listContacts());
+		// SortedListOf<ContactData> oldList =
+		// app.getContactHelper().getUiContacts();
+		// SortedListOf<ContactData> oldList =
+		// app.getContactHelper().getUiContacts();
 
 		Random rnd = new Random();
 		int index = rnd.nextInt(oldList.size() - 1);
@@ -36,7 +41,7 @@ public class ContactModification extends TestBase {
 		app.getContactHelper().modifyContact(index, contact);
 
 		SortedListOf<ContactData> newList = app.getContactHelper()
-				.getContacts();
+				.getUiContacts();
 
 		assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));
 	}

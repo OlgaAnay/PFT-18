@@ -26,8 +26,9 @@ public class ContactRemoval extends TestBase {
 	public void removeContact(ContactData contact) {
 		app.navigateTo().mainPage();
 
-		SortedListOf<ContactData> oldList = app.getContactHelper()
-				.getContacts();
+		SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
+		//SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
+		//SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
 
 		Random rnd = new Random();
 		int index = rnd.nextInt(oldList.size() - 1);
@@ -36,7 +37,7 @@ public class ContactRemoval extends TestBase {
 		app.getContactHelper().removeContact(index);
 
 		SortedListOf<ContactData> newList = app.getContactHelper()
-				.getContacts();
+				.getUiContacts();
 
 		assertThat(newList, equalTo(oldList.without(index)));
 	}

@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.example.entities.ContactData;
+import com.example.entities.GroupData;
 import com.example.utils.SortedListOf;
 
 public class ContactHelper extends WebDriverHelperBase {
@@ -26,7 +27,7 @@ public class ContactHelper extends WebDriverHelperBase {
 		editTable(contact, ContactHelper.CREATION);
 		submitEdit();
 		gotoHomePage();
-		rebuildCache();
+		manager.getModelForContacts().addContact(contact);
 		return this;
 	}
 
@@ -36,7 +37,7 @@ public class ContactHelper extends WebDriverHelperBase {
 		// editRandomContact(); //this can be used for another condition
 		editTable(contact, ContactHelper.MODIFICATION).updateContact();
 		gotoHomePage();
-		rebuildCache();
+		manager.getModelForContacts().removeContact(index).addContact(contact);
 		return this;
 	}
 
@@ -45,23 +46,16 @@ public class ContactHelper extends WebDriverHelperBase {
 			selectSomeContact(index);
 			deleteSelectedContact();
 			gotoHomePage();
-			rebuildCache();
+			manager.getModelForContacts().removeContact(index);
 		}
 		return this;
 	}
 
-	private SortedListOf<ContactData> cachedContacts;
-
-	public SortedListOf<ContactData> getContacts() {
-		if (cachedContacts == null) {
-			rebuildCache();
-		}
-		return cachedContacts;
-	}
-
-	private void rebuildCache() {
+	public SortedListOf<ContactData> getUiContacts() {
+		SortedListOf<ContactData> contacts = new SortedListOf<ContactData>();
+		
 		manager.navigateTo().mainPage();
-		cachedContacts = new SortedListOf<ContactData>();
+
 		List<WebElement> checkboxes = findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes) {
 
@@ -70,9 +64,9 @@ public class ContactHelper extends WebDriverHelperBase {
 					- ")".length());
 			String firstname = fn.substring(0, fn.indexOf(" "));
 			String lastname = fn.substring(fn.indexOf(" ") + 1);
-			cachedContacts.add(new ContactData().withFirstname(firstname)
-					.withLastname(lastname));
+			contacts.add(new ContactData().withFirstname(firstname).withLastname(lastname));
 		}
+		return contacts;
 	}
 
 	public int countContacts() {
@@ -87,7 +81,6 @@ public class ContactHelper extends WebDriverHelperBase {
 
 	public ContactHelper updateContact() {
 		click(By.name("update"));
-		cachedContacts = null;
 		return this;
 	}
 
@@ -109,7 +102,6 @@ public class ContactHelper extends WebDriverHelperBase {
 	public ContactHelper deleteAllContacts() {
 		if (countContacts() != 0) {
 			selectContactAndDeleteIt();
-			rebuildCache();
 		}
 		return this;
 	}
@@ -121,7 +113,6 @@ public class ContactHelper extends WebDriverHelperBase {
 			click(By.xpath("(//img[@alt='Edit'])[" + index + "]"));
 			deleteSelectedContact();
 			gotoHomePage();
-			rebuildCache();
 		}
 		return this;
 	}
@@ -158,9 +149,26 @@ public class ContactHelper extends WebDriverHelperBase {
 		return this;
 	}
 
+	/*public ContactHelper editTable(ContactData contact) {
+		type(By.name("firstname"), contact.getFirstname());
+		type(By.name("lastname"), contact.getLastname());
+		type(By.name("address"), contact.getAddress());
+		type(By.name("home"), contact.getHome());
+		type(By.name("mobile"), contact.getMobile());
+		type(By.name("work"), contact.getWork());
+		type(By.name("email"), contact.getMail1());
+		type(By.name("email2"), contact.getMail2());
+
+		selectByText(By.name("bday"), contact.getDay());
+		selectByText(By.name("bmonth"), contact.getMonth());
+
+		type(By.name("address2"), contact.getAddress2());
+		type(By.name("phone2"), contact.getPhone2());
+		return this;
+	}
+*/
 	public ContactHelper submitEdit() {
 		click(By.name("submit"));
-		cachedContacts = null;
 		return this;
 	}
 

@@ -13,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.example.entities.ContactData;
+import com.example.entities.GroupData;
 import com.example.utils.SortedListOf;
 
 public class ContactCreation extends TestBase {
@@ -26,13 +27,13 @@ public class ContactCreation extends TestBase {
 	public void testContactCreation(ContactData contact) throws Exception {
 		app.navigateTo().mainPage();
 
-		SortedListOf<ContactData> oldList = app.getContactHelper()
-				.getContacts();
+		SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
+		//SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
+		//SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
 
 		app.getContactHelper().createContact(contact);
 
-		SortedListOf<ContactData> newList = app.getContactHelper()
-				.getContacts();
+		SortedListOf<ContactData> newList = app.getContactHelper().getUiContacts();
 		System.out.println("New List: " + newList.toString());
 
 		assertThat(newList, equalTo(oldList.withAdded(contact)));

@@ -1,0 +1,30 @@
+<list>
+  <contact>
+    <firstname>test-1472616763</firstname>
+    <lastname>test-71561831</lastname>
+    <address>test998769868</address>
+    <mobile></mobile>
+    <work></work>
+    <mail1></mail1>
+    <mail2></mail2>
+    <day>16</day>
+    <month>June</month>
+    <year>2006</year>
+    <address2>test294325351</address2>
+    <phone2>1839877450</phone2>
+  </contact>
+  <contact>
+    <firstname>test-1141399229</firstname>
+    <lastname>test-744166056</lastname>
+    <address>test1959590314</address>
+    <mobile></mobile>
+    <work></work>
+    <mail1>test-6995434</mail1>
+    <mail2>test-1222454557</mail2>
+    <day>15</day>
+    <month>February</month>
+    <year>1999</year>
+    <address2>test323875209</address2>
+    <phone2>-1438213352</phone2>
+  </contact>
+</list>

@@ -25,14 +25,16 @@ public class GroupRemoval extends TestBase {
 	@Test(dataProvider = "randomValidGroupGenerator")
 	public void deleteSomeGroup(GroupData group) {
 
-		SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
-
+		SortedListOf<GroupData> oldList = new SortedListOf<GroupData>(app.getHibernateHelper().listGroups());
+		//SortedListOf<GroupData> oldList = app.getGroupHelper().getUiGroups();
+		//SortedListOf<GroupData> oldList = app.getGroupHelper().getUiGroups();
+		
 		Random rnd = new Random();
 		int index = rnd.nextInt(oldList.size() - 1);
 
 		app.getGroupHelper().deleteGroup(index);
 
-		SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+		SortedListOf<GroupData> newList = app.getGroupHelper().getUiGroups();
 
 		assertThat(newList, equalTo(oldList.without(index)));
 	}
