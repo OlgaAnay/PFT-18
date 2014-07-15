@@ -26,8 +26,8 @@ public class ContactRemoval extends TestBase {
 	public void removeContact(ContactData contact) {
 		app.navigateTo().mainPage();
 
-		SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
-		//SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
+		//SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
+		SortedListOf<ContactData> oldList = app.getModelForContacts().getContacts();
 		//SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
 
 		Random rnd = new Random();

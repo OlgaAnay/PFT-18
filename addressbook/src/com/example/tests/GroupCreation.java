@@ -25,8 +25,8 @@ public class GroupCreation extends TestBase {
 	@Test(dataProvider = "groupsFromFile")
 	public void testGroupCreationWithValidData(GroupData group) throws Exception {
 
-		SortedListOf<GroupData> oldList = new SortedListOf<GroupData>(app.getHibernateHelper().listGroups());
-		//SortedListOf<GroupData> oldList = app.getModelForGroups().getGroups();
+		//SortedListOf<GroupData> oldList = new SortedListOf<GroupData>(app.getHibernateHelper().listGroups());
+		SortedListOf<GroupData> oldList = app.getModelForGroups().getGroups();
 		//SortedListOf<GroupData> oldList = app.getGroupHelper().getUiGroups();
 		
 		app.getGroupHelper().createGroup(group);

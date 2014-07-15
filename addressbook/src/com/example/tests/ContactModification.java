@@ -27,12 +27,9 @@ public class ContactModification extends TestBase {
 	public void modifySomeContact(ContactData contact) throws Exception {
 		app.navigateTo().mainPage();
 
-		SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app
-				.getHibernateHelper().listContacts());
-		// SortedListOf<ContactData> oldList =
-		// app.getContactHelper().getUiContacts();
-		// SortedListOf<ContactData> oldList =
-		// app.getContactHelper().getUiContacts();
+		//SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
+		 SortedListOf<ContactData> oldList = app.getModelForContacts().getContacts();
+		// SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
 
 		Random rnd = new Random();
 		int index = rnd.nextInt(oldList.size() - 1);
